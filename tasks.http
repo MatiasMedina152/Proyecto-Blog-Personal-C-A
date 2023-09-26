@@ -1,0 +1,26 @@
+### Traer los Posts
+GET http://localhost:3000/api/tasks
+
+### Crear una Posts
+
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+    "title":"Titulo",
+    "description":"Descripcion",
+    "url":"www.url.com" 
+}
+### Modificar el Post
+
+PUT http://localhost:3000/api/tasks/3
+Content-Type: application/json
+
+{
+    "title":"Mi primer Post",
+    "description":"XD",
+    "url":"www.url.com" 
+}
+
+### Eliminar el Post
+DELETE http://localhost:3000/api/tasks/1
