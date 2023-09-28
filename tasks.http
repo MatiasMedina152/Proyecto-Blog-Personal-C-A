@@ -13,14 +13,14 @@ Content-Type: application/json
 }
 ### Modificar el Post
 
-PUT http://localhost:3000/api/tasks/3
+PUT http://localhost:3000/api/tasks/6
 Content-Type: application/json
 
 {
-    "title":"Mi primer Post",
-    "description":"XD",
+    "title":"Post modificado",
+    "description":"Post modificado",
     "url":"www.url.com" 
 }
 
-### Eliminar el Post
+### Eliminar el Post  
 DELETE http://localhost:3000/api/tasks/1

@@ -1,6 +1,10 @@
 // importar el TaskModel al controlador
 import { TaskModel } from "../models/Tasks.js"
 
+// Controller para mostrat Views
+export const ctrlView = (req,res) =>{
+    res.render("index.ejs",)
+}
 // controller para traer todas las tareas
 export const ctrlGetTask = async (req,res) => {
     try {
