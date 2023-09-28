@@ -10,7 +10,7 @@
 <body>
     <header >
         
-        <img src="https://i.pinimg.com/originals/7e/d5/79/7ed579eb6195cb5e9200ad4b13903bf7.jpg" width="300px"> <img src="https://wakeout.app/content/images/2023/05/Healthy-Work-4_clipdrop-enhance-crop.jpeg" width="280px"> <img src="https://i.pinimg.com/originals/66/6b/fd/666bfd11163c85b8e4f3fd3a64224d8e.jpg" width="190px"> <img src="https://i.etsystatic.com/24167587/r/il/92084a/4385978145/il_fullxfull.4385978145_jq93.jpg" width="280px">
+        <img src="https://i.etsystatic.com/24167587/r/il/92084a/4385978145/il_fullxfull.4385978145_jq93.jpg" width="280px">
         <h1>Foro Multimedia de una persona Lorem Ipsum </h1>
     </header>    
     <main>
@@ -48,7 +48,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="formulario" >
                     <div class="mb-3">
                         <label for="inputTitulo" class="col-form-label">Titulo del Post</label>
                         <input type="text" class="form-control" id="inputTitle">
@@ -61,12 +61,13 @@
                         <label for="inputURL" class="col-form-label">Imagen (URL)</label>
                         <input type="url" class="form-control" id="inputURL">
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" id="btn-publicar"></button>
+                    </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="btn-publicar"></button>
-                </div>
+               
                 </div>
             </div>
             </div>

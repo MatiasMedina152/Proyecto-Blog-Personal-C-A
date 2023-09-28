@@ -1,12 +1,14 @@
 
-const contenedor = document.getElementById("container-row")
-const btnCrear = document.getElementById("btn-newPost")
-const myModal = new bootstrap.Modal(document.getElementById('myModal'))
-const btnPublicar = document.getElementById("btn-publicar")
+const contenedor = document.getElementById("container-row");
+const btnCrear = document.getElementById("btn-newPost");
+const myModal = new bootstrap.Modal(document.getElementById('myModal'));
+const btnPublicar = document.getElementById("btn-publicar");
+const form = document.getElementById("formulario");
 
 
-let html=""
-let option=""
+let html="";
+let option="";
+let idForm = "";
 
 const inputTitle = document.getElementById("inputTitle")
 const inputDescripcion = document.getElementById("inputDescripcion")
@@ -57,7 +59,70 @@ document.addEventListener("click", (event) =>{
     }
 })
 
-console.log(contenedor)
+document.addEventListener("click",(event) =>{
+    if(event.target.matches("#btn-edit")){
+        const article = event.target.closest(".col-12");
+        const idArticle = article.dataset.id;
+        const urlEdit = article.children[0].children[0].src;
+        const titleEdit= article.children[0].children[1].children[0].textContent;
+        const descriptionEdit= article.children[0].children[1].children[1].textContent;
+        
+        inputTitle.value = titleEdit;
+        inputDescripcion.value = descriptionEdit;
+        inputURL.value = urlEdit ;
+        idForm = idArticle;
+        option = "edit";
+        btnPublicar.textContent = "Editar";
+        myModal.show();
+    }
+}); 
+
+    form.addEventListener("submit",(event) =>{
+    event.preventDefault();
+
+    if(option === "new"){
+        const newPost = {
+            title: inputTitle.value,
+            description: inputDescripcion.value,
+            url: inputURL.value
+
+        };
+        fetch("http://localhost:3000/api/tasks",{
+            method: "POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(newPost)
+        }).then(res =>{
+            if(res.ok){
+                alert("Post Creado");
+               myModal.hide();
+               location.reload(); 
+            }
+        })
+    }
+    if(option === "edit"){
+        const editPost ={
+            title: inputTitle.value,
+            description: inputDescripcion.value,
+            url: inputURL.value
+        };
+        fetch(`http://localhost:3000/api/tasks/${idForm}`,{
+            method: "PUT",
+            headers:{
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(editPost)
+        }).then(res => {
+            if(res.ok){
+                alert("Post editado")
+                myModal.hide();
+               location.reload();
+            }
+        })
+    }
+});
+
 fetch("http://localhost:3000/api/tasks")
     .then(res => res.json())
     .then(data =>{
@@ -65,7 +130,7 @@ fetch("http://localhost:3000/api/tasks")
             html += `
             <article class="col-12 d-flex justify-content-center" data-id="${post.id}">
 
-            <div class="card" style="width: 40rem;" id="Card">
+            <div class="card" style="width: 30rem;" id="Card">
                 <img src="${post.url}" class="card-img-top" alt="Una imagen">
                 <div class="card-body">
                   <h5 class="card-title">${post.title}</h5>
