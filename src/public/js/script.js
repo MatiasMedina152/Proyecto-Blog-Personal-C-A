@@ -123,28 +123,4 @@ document.addEventListener("click",(event) =>{
     }
 });
 
-fetch("http://localhost:3000/api/tasks")
-    .then(res => res.json())
-    .then(data =>{
-        data.forEach(post => {
-            html += `
-            <article class="col-12 d-flex justify-content-center" data-id="${post.id}">
-
-            <div class="card" style="width: 30rem;" id="Card">
-                <img src="${post.url}" class="card-img-top" alt="Una imagen">
-                <div class="card-body">
-                  <h5 class="card-title">${post.title}</h5>
-                  <p class="card-text">${post.description}</p>
-                  <div>
-                    <a  class="btn btn-danger" id="btn-delete">Eliminar</a>
-                    <a  type="" class="btn btn-primary" id="btn-edit">Editar Post</a>
-                  </div>
-                </div>
-              </div>
-            
-            </article>
-            `
-            contenedor.innerHTML = html
-        });
-    } )
-
+ 

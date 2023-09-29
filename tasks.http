@@ -7,8 +7,8 @@ POST http://localhost:3000/api/tasks
 Content-Type: application/json
 
 {
-    "title":"Titulo4",
-    "description":"Descripcion4",
+    "title":"Titulo1",
+    "description":"Descripcion1",
     "url":"https://i.pinimg.com/736x/67/4c/97/674c9779a74378172cc12720c9e2244f.jpg" 
 }
 ### Modificar el Post

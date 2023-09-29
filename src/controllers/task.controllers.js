@@ -2,8 +2,18 @@
 import { TaskModel } from "../models/Tasks.js"
 
 // Controller para mostrat Views
-export const ctrlView = (req,res) =>{
-    res.render("index.ejs",)
+export const ctrlView = async   (req,res) =>{
+    
+    try {
+        const posts = await TaskModel.findAll();
+        res.render("posts.ejs",{posts})
+    } catch (error) {
+        console.error(error)
+        return res.status(500).json({
+            message: "Error Server"
+        })
+        
+    }
 }
 // controller para traer todas las tareas
 export const ctrlGetTask = async (req,res) => {
